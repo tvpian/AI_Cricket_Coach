@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cricket</title>
+    <body>
+
+    <div id="CricketBowling"> </div>
+    <script src="static/js/three.js" charset="utf-8"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="static/js/physi.js"></script>
+    <script src="static/js/controls/firstpersoncontrols.js" ></script>
+    <script src="static/js/controls/OrbitControls.js" ></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      var shot = {{ shot_type }}
+    </script>
+   <!-- <script src="statiOBJLoader.js" ></script>-->
+
+    <script src="static/velocity.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="static/styles.css">
+
+  </head>
+    <script src="static/main.js" charset="utf-8"></script>
+<div id="ControlsContainer">
+  <table id="ControlsTable">
+    <tr>
+      <td> <label> camera</label>
+      </td>
+      <td>
+        <select id="CameraComboBox">
+          <option value="GENERAL_CAMERA">GENERAL_CAMERA</option>
+          <option value="MAIN_UMPIRE">MAIN_UMPIRE</option>
+          <option value="LEG_UMPIRE">LEG_UMPIRE</option>
+          <option value="KEEPER">KEEPER</option>
+        </select>
+      </td>
+
+      <td>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+                   <label>Speed: &nbsp;</label>
+               </td>
+               <td>
+                 <div>
+                   <input id="SpeedSlider" type="range" step="1" min="60" max="160" value="130" />&nbsp;
+                 </div>
+
+               </td>
+               <td>
+                   <label id="SpeedLabel">130 kmph</label>
+               </td>
+               <td>
+                   &nbsp;&nbsp;&nbsp;&nbsp;
+                   <label>Swing: &nbsp;</label>
+               </td>
+               <td>
+                   <input id="SwingSlider" type="range" step="1" min="-3" max="3" value="0" />&nbsp;
+               </td>
+               <td>
+                   <label id="SwingLabel">0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+               </td>
+			   <td>
+                   <button onclick="shot1()">Shot 1</button>&nbsp;
+               </td>
+			   <td>
+                   <button onclick="shot2()">Shot 2</button>&nbsp;
+               </td>
+			   <td>
+                  <button onclick="shot3()">Shot 3</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               </td>
+			   <td>
+                   <label id="ScoreLabel">Score:</label>&nbsp;&nbsp;&nbsp;
+               </td>
+			   <td>
+                   <label id="ScoreValue">0%</label>
+               </td>
+
+
+</tr>
+  </table>
+
+  </body>
+</html>

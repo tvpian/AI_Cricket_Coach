@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Cricket</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.action-button').click(function() {
+                $('#action-type').val($(this).attr('data-action-type'));
+                $('#form-submit').trigger('click');
+            });
+        });
+    </script>
+    <style>
+        html, body, .container {
+            height: 100%;
+        }
+ 
+        body {
+            background: url('static/latest.jpg') no-repeat center center fixed #000; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+        }
+ 
+        .content-container {
+            background-color: #ffffff;
+            margin: 0 auto;
+            width: 650px;
+            position: relative;
+            top: calc(50% - 210px);
+            border: 2px solid #a7a7a7;
+            padding: 45px 85px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+ 
+<body>
+    <div class="container">
+        <div class="content-container">
+            <h1>My Coach</h1>
+            <div class="mt-4">
+                <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" class="form-control" id="action-type" name="action-type">
+                    <div class="form-group">
+                        <label>Select batsman</label>
+                        <select name="batsman">
+                            <option selected></option>
+                            
+                            {% for i in range(0, len) %} 
+                            <option value="{{ batsmen[i] }}">{{ batsmen[i] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Upload Video</label>
+                        <input type="file" name="video-input">
+                        <input type="submit" class="btn btn-primary" id="form-submit" style="display: none;">
+                    </div>
+                </form>
+    
+                <button id="analyze" class="btn action-button btn-primary" data-action-type="analyze">Analyze</button>
+                <button id="coach" class="btn action-button btn-primary ml-4" data-action-type="coachme">Coach Me</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

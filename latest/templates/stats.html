@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Cricket</title>
+    <style>
+        html,
+        body,
+        .container {
+            height: 100%;
+        }
+ 
+        body {
+            background: url('static/latest.jpg') no-repeat center center fixed #000; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+        }
+ 
+        .content-container {
+            background-color: #ffffff;
+            margin: 0 auto;
+            width: 650px;
+            position: relative;
+            top: calc(50% - 210px);
+            border: 2px solid #a7a7a7;
+            padding: 45px 85px;
+            border-radius: 10px;
+        }
+ 
+        .stat-label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+ 
+<body>
+    <div class="container">
+        <div class="content-container">
+            <h1>Shot Analysis for {{ batsman }}</h1>
+            <div class="mt-4">
+                <table class="table">
+                    <tbody>
+                        {% for key, value in stats.items() %}
+                        <tr>
+                            <td class="stat-label">{{ key }}</td>
+                            <td class="stat-value">{{ value }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+ 
+</html>

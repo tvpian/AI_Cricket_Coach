@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Cricket</title>
+    <style>
+        html,
+        body,
+        .container {
+            height: 100%;
+        }
+
+        body {
+            background: url('static/latest.jpg') no-repeat center center fixed #000; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+        }
+
+        .content-container {
+            background-color: #ffffff;
+            margin: 0 auto;
+            width: 1030px;
+            position: relative;
+            top: calc(50% - 310px);
+            border: 2px solid #a7a7a7;
+            padding: 45px 85px;
+            border-radius: 10px;
+        }
+
+        .stat-label {
+            font-weight: bold;
+        }
+
+        .graphs-container {
+            margin-top: 10px;
+        }
+
+        .graph {
+            width: 400px;
+            border: 2px solid #8e8e8e;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .graph-2 {
+            margin-left: 50px;
+        }
+    </style>
+	<style>
+        .float-left submit-button {
+            text-align: center;
+            border: 1px solid coral;
+            height: 40vh;
+            width: 50vw;
+        }
+    </style>
+	<script type="text/javascript">
+    document.getElementById("myButton").onclick = function () 
+	{
+        location.href = "http://localhost:8080/coachme";
+    };
+	</script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="content-container">
+            <h1 class="text-center">Shot Analysis for {{ batsman }}</h1>
+            <div class="mt-4">
+                <table class="table">
+                    <tbody>
+                        {% for key, value in stats.items() %}
+                        <tr>
+                            <td class="stat-label">{{ key }}</td>
+                            <td class="stat-value">{{ value }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="graphs-container">
+                <img src="/static/reaction_time.png" class="graph graph-1" alt="Graph 1">
+                <img src="/static/power.jpg" class="graph graph-2" alt="Graph 2">
+            </div>
+			<div class="coach_me" style="position:fixed;bottom:0.25in; right:6.5in;">
+               <button onclick="location.href = 'http://localhost:8080/coachme';" id="myButton" class="submit-button" >Coach Me</button>
+            </div>		
+        </div>
+    </div>
+</body>
+
+</html>
