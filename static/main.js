@@ -3,6 +3,7 @@ var batMaterial1 = Physijs.createMaterial(new THREE.MeshBasicMaterial({color: 0X
 var bat1 = new Physijs.CylinderMesh(batGeometry,batMaterial1, 0);
 var batMaterial2 = Physijs.createMaterial(new THREE.MeshBasicMaterial({color: 0Xfa6d00}), 0 , 0.99);
 var bat2 = new Physijs.CylinderMesh(batGeometry,batMaterial2, 0);
+var score;
 bat1.name = 'Batsman1';
 bat1.rotation.x = 0;
 bat1.rotation.y = 0;
@@ -20,7 +21,8 @@ console.log('Cricket BALL');
 var shouldMoveBat = true;
 //var moveBatCoordinates = [[-0.5, 5, -9.1],[-0.5, 6, -9.1],[-0.5, 6.5, -9.1],[-0.5, 7, -9.1],[-0.5, 7.5, -9.1],[-0.5, 8.0, -9.1],[-0.5, 8.5, -9.1],[-0.5, 9.2, -9.1]];
 var moveBat2Coordinates=[[-0.5, 1.2, -9.1,0,-1,0],[-0.55, 1.2, -8.5,0,-1,0],[-0.58, 1.2, -8.3,0,-1,0],[-0.6, 1.2, -8.0,0,-1,0],[-0.65, 1.2, -7.8,-15,-1,0],[-0.68, 1.2, -7.7,-19,-1,0],[-0.7, 1.2, -7.5,-20,-1,0],[-0.72, 1.2, -7.3,-25,-1,0]];
-var moveBat1Coordinates=[[-0.5, 1.2, -9.1,0,0,0],[-0.5, 1.2, -8.5,0,0,0],[-0.5, 1.2, -8.3,0,0,0],[-0.5, 1.2, -8.0,0,0,0],[-0.5, 1.2, -7.8,0,0,0],[-0.5, 1.2, -7.7,-20,0,0],[-0.5, 1.2, -7.5,-29,0,0],[-0.5, 1.2, -7.3,-30,0,0]];
+var moveBat1Coordinates=shot;
+//var moveBat1Coordinates=[[-0.5, 1.2, -9.1,0,0,0],[-0.5, 1.2, -8.5,0,0,0],[-0.5, 1.2, -8.3,0,0,0],[-0.5, 1.2, -8.0,0,0,0],[-0.5, 1.2, -7.8,0,0,0],[-0.5, 1.2, -7.7,-20,0,0],[-0.5, 1.2, -7.5,-29,0,0],[-0.5, 1.2, -7.3,-30,0,0]];
 var stopBat2=[[100,100, 100,0,0,0],[100,100, 100,0,0,0],[100,100, 100,0,0,0],[100,100, 100,0,0,0],[100,100, 100,0,0,0],[100,100, 100,0,0,0],[100,100, 100,0,0,0],[100,100, 100,0,0,0]]
 moveBat2Coordinates=stopBat2;
 //Including Libraries
@@ -63,7 +65,6 @@ function shot2() {
   document.getElementById("ScoreValue").innerHTML = score+"%";
 }
 
-var score;
 function shot3() {
   //document.getElementById("demo").innerHTML = "Hello World";
   moveBat2Coordinates=[[-0.3, 1.2, -9.1,0,0,0],[-0.3, 1.2, -8.5,0,0,0],[-0.3, 1.2, -8.3,0,0,0],[-0.3, 1.2, -8.0,0,0,0],[-0.3, 1.2, -7.8,0,0,0],[-0.3, 1.2, -7.7,-10,0,0],[-0.3, 1.2, -7.5,-25,0,0],[-0.3, 1.2, -7.3,-27,0,0]];

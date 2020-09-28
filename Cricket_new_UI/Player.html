@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cricketApp">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cricket</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css" >
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-resource.min.js"></script>
+  <script src="js/app2.js"></script>
+  <style>
+    html, body {
+        height: 100%;
+    }
+
+    body {
+        background: url('ball2.jpg') no-repeat center center fixed #000; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+    }
+
+    
+</style>
+  
+</head>
+
+<body ng-controller="mainController as mainCtrl">
+  <div class="container">
+    <h1 class="text-center mt-3">AI Coach</h1>
+
+    <h2 class="text-center mb-5">{{mainCtrl.currentPage.header}}</h2>
+
+    <div ng-if="mainCtrl.currentPage.id === 'players'">
+      <div class="players-container" ng-controller="playersController as ctrl">
+        <div class="players">
+          <div class="player d-inline-block cursor-pointer" ng-class="ctrl.selectedPlayer == player ? 'selected' : ''"
+               ng-repeat="player in ctrl.players" ng-click="ctrl.selectPlayer(player)">
+            <img class="player-photo rounded-circle" ng-src="{{player.imageUrl}}" />
+            <div class="text-center">
+              {{player.name}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary float-right mt-4" ng-click="mainCtrl.goToPage('deliveries')">Next</button>
+  </div>
+
+    <div ng-if="mainCtrl.currentPage.id === 'deliveries'">
+      <div class="deliveries-container" ng-controller="deliveriesController as ctrl">
+        <div class="deliveries">
+          <div class="delivery d-inline-block mb-3" ng-class="ctrl.selectedDelivery === delivery ? 'selected' : ''"
+               ng-repeat="delivery in ctrl.deliveries" ng-click="ctrl.selectDelivery(delivery)">
+            <div class="video-preview-container cursor-pointer" ng-mouseenter="ctrl.playPreview(delivery)" ng-mouseleave="ctrl.stopPreview(delivery)">
+              <video id="preview-{{delivery.id}}" class="video-preview" muted>
+                <source ng-src="{{delivery.videoUrl}}" type="video/mp4">
+              </video>
+            </div>
+            <div class="text-center">
+              {{delivery.name}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary float-right mt-4" ng-click="mainCtrl.goToPage('analyze')">Next</button>
+      <button class="btn btn-primary float-left mt-4" ng-click="mainCtrl.goToPage('players')">Previous</button>
+    </div>
+
+    <div ng-if="mainCtrl.currentPage.id === 'analyze'">
+      <div class="analyze-container" ng-controller="analyzeController as ctrl">
+      </div>
+
+      <button class="btn btn-primary float-left mt-4" ng-click="mainCtrl.goToPage('deliveries')">Previous</button>
+    </div>
+
+  </div>
+</body>
+
+</html>
